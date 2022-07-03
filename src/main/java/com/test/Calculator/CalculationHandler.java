@@ -12,6 +12,6 @@ public class CalculationHandler {
 
     public Mono<ServerResponse> hello(ServerRequest request) {
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromValue(new Response(new Computer().compute("1 + 2"))));
+                .body(BodyInserters.fromValue(new Response(new Computer().compute(request.queryParam("script").get()))));
     }
 }

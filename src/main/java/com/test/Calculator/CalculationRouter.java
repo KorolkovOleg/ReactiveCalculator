@@ -7,8 +7,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration(proxyBeanMethods = false)
 public class CalculationRouter {
@@ -17,6 +16,6 @@ public class CalculationRouter {
     public RouterFunction<ServerResponse> route(CalculationHandler greetingHandler) {
 
         return RouterFunctions
-                .route(GET("/hello").and(accept(MediaType.APPLICATION_JSON)), greetingHandler::hello);
+                .route(GET("/calculator").and(accept(MediaType.APPLICATION_JSON)), greetingHandler::hello);
     }
 }

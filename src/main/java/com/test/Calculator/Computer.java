@@ -6,20 +6,14 @@ import javax.script.ScriptException;
 
 public class Computer {
 
-    public String compute(String script1) {
+    public String compute(String script) {
         try {
             ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-
-            Object result = engine.eval(
-                    "var greeting='hello world';" +
-                            "print(greeting);" +
-                            "greeting");
-
-            System.out.println(result);
+             Object result = engine.eval(script);
+            return result.toString();
         } catch (ScriptException e) {
             e.printStackTrace();
+            return e.getMessage();
         }
-
-        return "3";
     }
 }
